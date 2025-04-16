@@ -18,13 +18,13 @@ public class UserController {
     }
 
     // 1. 获取所有用户
-    @GetMapping
+    @GetMapping("/all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
     // 2. 添加用户
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         try {
             User newUser = userService.addUser(user);
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     // 3. 删除用户
-    @DeleteMapping("/{id}")
+    @PostMapping("/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
